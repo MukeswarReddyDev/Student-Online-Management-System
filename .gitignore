@@ -1,0 +1,21 @@
+# Compiled Java class files
+bin/
+*.class
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.eclipse
+.classpath
+.project
+.settings/
+
+# Runtime data file (generated at runtime, should not be versioned)
+students.txt
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db

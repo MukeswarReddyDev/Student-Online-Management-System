@@ -14,24 +14,19 @@ public class Main {
             System.out.println("3. Search Student");
             System.out.println("4. Delete Student");
             System.out.println("5. Exit");
-            System.out.print("Enter your choice: ");
             
-            int choice = scanner.nextInt();
+            int choice = readInt(scanner, "Enter your choice: ");
 
             if (choice == 1) {
-                System.out.print("Enter ID: ");
-                int id = scanner.nextInt();
-                scanner.nextLine(); // consume newline
+                int id = readInt(scanner, "Enter ID: ");
+                if (manager.exists(id)) {
+                    System.out.println("Error: A student with ID " + id + " already exists!");
+                    continue;
+                }
                 
-                System.out.print("Enter Name: ");
-                String name = scanner.nextLine();
-                
-                System.out.print("Enter Age: ");
-                int age = scanner.nextInt();
-                scanner.nextLine(); // consume newline
-                
-                System.out.print("Enter Course: ");
-                String course = scanner.nextLine();
+                String name = readString(scanner, "Enter Name: ");
+                int age = readInt(scanner, "Enter Age: ");
+                String course = readString(scanner, "Enter Course: ");
                 
                 Student student = new Student(id, name, age, course);
                 manager.addStudent(student);
@@ -40,13 +35,11 @@ public class Main {
                 manager.viewAllStudents();
                 
             } else if (choice == 3) {
-                System.out.print("Enter ID to search: ");
-                int id = scanner.nextInt();
+                int id = readInt(scanner, "Enter ID to search: ");
                 manager.searchStudent(id);
                 
             } else if (choice == 4) {
-                System.out.print("Enter ID to delete: ");
-                int id = scanner.nextInt();
+                int id = readInt(scanner, "Enter ID to delete: ");
                 manager.deleteStudent(id);
                 
             } else if (choice == 5) {
@@ -59,5 +52,30 @@ public class Main {
         }
         
         scanner.close();
+    }
+
+    // Helper to read an integer with error handling
+    private static int readInt(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine().trim();
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid integer number.");
+            }
+        }
+    }
+
+    // Helper to read a non-empty string
+    private static String readString(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String input = scanner.nextLine().trim();
+            if (!input.isEmpty()) {
+                return input;
+            }
+            System.out.println("Input cannot be empty. Please try again.");
+        }
     }
 }
