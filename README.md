@@ -1,4 +1,4 @@
-# 🎓 Online Student Management System
+# 🎓 Student Management System
 
 A **console-based Student Management System** built in Java using Collections (ArrayList). It allows you to manage student records with full **CRUD operations** and automatic **data persistence** across sessions.
 
@@ -90,6 +90,17 @@ ID: 102   | Name: Bob Ross             | Age: 22  | Course: Art
 - **Exception Handling** — `try-catch` blocks to handle invalid user inputs robustly
 
 ---
+
+## 🔮 Future Enhancements
+
+- Database integration using MySQL
+- GUI version using Java Swing or JavaFX
+- Web-based version using Spring Boot
+- Authentication and Admin Login
+- Cloud deployment support
+
+---
+
 
 ## 👨‍💻 Author
 
